@@ -3,7 +3,7 @@
     <h1>博客总览</h1>
     <input type="text" v-model="search" placeholder="搜索">
     <div v-for="blog in filteredBlogs" class="single-blog">
-        <h2 v-rainbow>{{ blog.title | to - uppercase }}</h2>
+        <h2 v-rainbow>{{ blog.title }}</h2>
         <article>
             {{ blog.body | snippet }}
         </article>
@@ -21,8 +21,9 @@ export default {
             search: ""
         }
     },
+
     created() {
-        this.$http.get('https://jsonplaceholder.typicode.com/posts')
+        this.$http.get('/posts.json')
             .then(function (data) {
                 this.blogs = data.body.slice(0, 10);
             })
