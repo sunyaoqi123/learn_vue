@@ -10,7 +10,9 @@
             </li>
         </ul>
         <button @click="deleteSingleBlog()">删除</button>
-        <router-link :to="'/edit/' + id">编辑</router-link>
+        <button>
+        <router-link :to="'/edit/' + id" style="color:white; text-decoration: none;">编辑</router-link>
+        </button>
     </div>
 </template>
 
@@ -47,11 +49,11 @@ export default{
 
 <style scoped>
 #single-blog{
-    max-width: 960px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 70px;
     background-color: rgba(0, 0, 0, 0.6);
-    border: 1px dotted #aaa;
+    border: 1px dotted #aaa; 
 }
 h1{
     color: rgb(68, 133, 219);
@@ -70,6 +72,18 @@ p,ul{
 div{
     border: 1px solid #000;
     margin: auto;
+    box-sizing: content-box;
+}
+button{
+    background-color:#4489cf ;
+    color:aliceblue;
+    width: 770px;
+    height: 25px;
+    border: 0;
+    font-size: 16px;
+    
+    box-sizing: content-box;
+    border-radius: 5px;
 }
 </style>
 
