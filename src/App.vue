@@ -20,6 +20,7 @@ export default{
 </script>
 
 <style lang="less">
+
 body{
     background-image: url("../static/beijing1.png");
     width: 100%;min-width: 990px;

@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'show',
     component: ShowBlog
   },
   {
@@ -17,6 +17,11 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import( '../components/AddBlog.vue')
+  },
+  {
+    path: '/blog/:id',
+    name:'singleblog',
+    component: () => import( '../components/SingleBlog.vue')
   }
 ]
 
