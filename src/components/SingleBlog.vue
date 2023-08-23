@@ -1,7 +1,14 @@
 <template>
     <div id="single-blog">
         <h1>{{ blog.title }}</h1>
-        <article>{{ blog.body }}</article>
+        <article>{{ blog.content }}</article>
+        <p>作者：{{ blog.author }}</p>
+        <p>分类：</p>
+        <ul>
+            <li v-for="category in blog.categories">
+                {{ category }}
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -15,10 +22,14 @@ export default{
         }
     },
     created(){
-        this.$http.get('https://jsonplaceholder.typicode.com/posts/' + this.id)
+        this.$http.get('https://blog-1e9cd-default-rtdb.firebaseio.com/posts/' + this.id + ".json")
         .then(function(data){
-            //console.log(data);
-            this.blog=data.body;
+            console.log(data);
+            return data.json();
+            //this.blog=data.body;
+        })
+        .then(function(data){
+            this.blog = data;
         })
     }
 }
@@ -34,10 +45,20 @@ export default{
 }
 h1{
     color: rgb(68, 133, 219);
+    text-align: center;
 }
 
 article{
     color: aliceblue;
+    text-align: center;
+
+}
+p,ul{
+    text-align: right;
+}
+div{
+    border: 1px solid #000;
+    margin: auto;
 }
 </style>
 

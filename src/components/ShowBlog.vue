@@ -9,7 +9,7 @@
             </h2>
         </router-link>
         <article>
-            {{ blog.body | snippet }}
+            {{ blog.content | snippet }}
         </article>
     </div>
 
@@ -27,9 +27,22 @@ export default {
     },
 
     created() {
-        this.$http.get('/posts.json')
+        this.$http.get('https://blog-1e9cd-default-rtdb.firebaseio.com/posts.json')
             .then(function (data) {
-                this.blogs = data.body.slice(0, 10);
+                //console.log(data.json());
+                return data.json()
+                //this.blogs = data.body.slice(0, 10);
+            })
+            .then(function(data){
+                var blogsArray=[];
+                for(let key in data){
+                    //console.log(data[key]);
+                    data[key].id=key;
+                    blogsArray.push(data[key]);
+                }
+                //console.log(blogsArray);
+                this.blogs=blogsArray;
+                console.log(this.blogs);
             })
     },
     computed: {

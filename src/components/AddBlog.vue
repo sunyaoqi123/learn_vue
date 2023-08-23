@@ -58,7 +58,8 @@ export default {
             blog: {
                 title: "",
                 content: "",
-                categories: []
+                categories: [],
+                author:""
             },
             authors: ["Tang", "And", "Sun"],
             submmited: false
@@ -66,12 +67,7 @@ export default {
     },
     methods: {
         post: function () {
-            this.$http.post("https://jsonplaceholder.typicode.com/posts", {
-                title: this.blog.title,
-                body: this.blog.content,
-                userId: 1
-            })
-
+            this.$http.post("https://blog-1e9cd-default-rtdb.firebaseio.com/posts.json",this.blog )
                 .then(function (data) {
                     console.log(data);
                     this.submmited = true;
