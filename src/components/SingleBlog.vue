@@ -9,6 +9,8 @@
                 {{ category }}
             </li>
         </ul>
+        <button @click="deleteSingleBlog()">删除</button>
+        <router-link :to="'/edit/' + id">编辑</router-link>
     </div>
 </template>
 
@@ -31,11 +33,19 @@ export default{
         .then(function(data){
             this.blog = data;
         })
+    },
+    methods:{
+        deleteSingleBlog(){
+            this.$http.delete("https://blog-1e9cd-default-rtdb.firebaseio.com/posts/" + this.id + ".json")
+            .then(response =>{
+                this.$router.push({path:"/"})
+            })
+        }
     }
 }
 </script>
 
-<style>
+<style scoped>
 #single-blog{
     max-width: 960px;
     margin: 0 auto;
@@ -50,11 +60,12 @@ h1{
 
 article{
     color: aliceblue;
-    text-align: center;
-
+    font-size: large;
+    line-height: 30px;
 }
 p,ul{
     text-align: right;
+    line-height: 20px;
 }
 div{
     border: 1px solid #000;

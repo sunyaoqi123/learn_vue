@@ -6,7 +6,7 @@
             <input type="text" v-model="blog.title" required />
 
             <label><b>博客内容</b></label>
-            <textarea v-model="blog.content"></textarea>
+            <textarea style="white-space: pre-line" v-model="blog.content"></textarea>
 
             <div id="checkboxes">
               | <label><b>Romantic</b></label>
@@ -78,15 +78,17 @@ export default {
 </script>
 
 <style>
-
+h2{
+    font-size: 32px;
+}
 #add-blog * {
     box-sizing: border-box;
 }
 
 #add-blog {
     margin: 20px auto;
-    max-width: 600px;
-    padding: 20px;
+    max-width: 800px;
+    padding: 0px;
 }
 
 label {
@@ -144,5 +146,7 @@ input,textarea,select,p,h3,li{
 input,textarea{
     font-size: large;
 }
-
+div{
+    white-space: pre-line;
+}
 </style>
