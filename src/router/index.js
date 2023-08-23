@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import ShowBlog from '../components/ShowBlog.vue'
 
 Vue.use(VueRouter)
 
@@ -8,20 +8,22 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: ShowBlog
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/add',
+    name: 'add',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import( '../views/AboutView.vue')
+    component: () => import( '../components/AddBlog.vue')
   }
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  //去掉网址后的/#/
+  mode : "history"
 })
 
 export default router
