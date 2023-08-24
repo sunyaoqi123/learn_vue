@@ -14,3 +14,17 @@
 
 实践：
 现在保存git使用.txt这个文件并且重新提交一次，我看着你。
+<template>
+    <div id="single2-blog">
+        <h1>{{ blog.title }}</h1>
+        <article>{{ blog.content }}</article>
+        <p>作者：{{ blog.author }}</p>
+        <p>分类：</p>
+        <ul>
+            <li v-for="category in blog.categories">
+                {{ category }}
+            </li>
+        </ul>
+        <button @click="RecycleSingleBlog()">删除</button>
+    </div>
+</template>

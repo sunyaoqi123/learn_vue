@@ -27,6 +27,16 @@ const routes = [
     path: '/edit/:id',
     name:'editblog',
     component: () => import( '../components/EditBlog.vue')
+  },
+  {
+    path: '/recycle',
+    name:'recycle',
+    component: () => import('../components/RecycleBlog.vue')
+  },
+  {
+    path: '/recycleblog/:id',
+    name:'recycleblog',
+    component: () => import('../components/SingleBlog2.vue')
   }
 ]
 

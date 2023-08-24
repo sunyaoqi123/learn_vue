@@ -68,6 +68,7 @@ export default {
     methods: {
         post: function () {
             this.$http.post("https://blog-1e9cd-default-rtdb.firebaseio.com/posts.json",this.blog )
+            /*this.$http.post("https://recycleblog-28574-default-rtdb.firebaseio.com/posts2.json",this.blog )*/
                 .then(function (data) {
                     console.log(data);
                     this.submmited = true;

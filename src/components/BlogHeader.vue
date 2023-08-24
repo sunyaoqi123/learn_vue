@@ -4,6 +4,7 @@
             <li>
                 <router-link to="/" exact>博客</router-link>
                 <router-link to="/add" exact>添加博客</router-link>
+                <router-link to="/recycle" exact>回收站</router-link>
             </li>
         </ul>
     </nav>
