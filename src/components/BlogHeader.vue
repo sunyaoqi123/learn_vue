@@ -1,22 +1,50 @@
-<template>
-    <nav>
-        <ul>
-            <li>
-                <router-link to="/" exact>博客</router-link>
-                <router-link to="/add" exact>添加博客</router-link>
-                <router-link to="/recycle" exact>回收站</router-link>
-            </li>
-        </ul>
-    </nav>
+<template >
+    <div class="sticky-header" :class="{ 'is-sticky': isSticky }">
+        <nav>
+            <ul>
+                <li><router-link to="/" exact>博客</router-link>
+                    <router-link to="/add" exact>添加博客</router-link>
+                    <router-link to="/recycle" exact>回收站</router-link>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </template>
 
 <script>
-export default{
+export default {
+  data() {
     name:"blog-header"
+    return {
+      isSticky: false
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll)
+  },
+  methods: {
+    handleScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      this.isSticky = scrollTop > 0 // 当页面滚动超过100px时启用固定
+    }
+  }
 }
 </script>
 
 <style scoped>
+.sticky-header {
+    position: relative; /* 设置相对定位 */
+    min-width: 1500px;
+}
+
+.is-sticky {
+    position: fixed; /* 设置固定定位 */
+    top: 0; /* 设置固定在顶部 */
+}
+
 ul{
   list-style-type: none;
   text-align: center;
