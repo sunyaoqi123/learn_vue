@@ -1,6 +1,6 @@
 <template>
     <div id="single2-blog">
-        <h1> 哈哈</h1>
+        <h1> {{ blog.title }}</h1>
         <article>{{ blog.content }}</article>
         <p>作者：{{ blog.author }}</p>
         <p>分类：</p>
@@ -9,7 +9,8 @@
                 {{ category }}
             </li>
         </ul>
-        <button @click="RecycleSingleBlog()">删除</button>
+        <button @click="RecycleSingleBlog()">恢复</button>
+        <button @click="DeleteSingleBlog()">删除</button>
     </div>
 </template>
 
@@ -35,9 +36,16 @@ export default {
     },
     methods: {
         RecycleSingleBlog() {
+            this.$http.post("https://blog-1e9cd-default-rtdb.firebaseio.com/posts.json", this.blog),
             this.$http.delete("https://recycleblog-28574-default-rtdb.firebaseio.com/posts2/" + this.id + ".json")
                 .then(response => {
                     this.$router.push({ path: "/" })
+                })
+        },
+        DeleteSingleBlog(){
+            this.$http.delete("https://recycleblog-28574-default-rtdb.firebaseio.com/posts2/" + this.id + ".json")
+                .then(response => {
+                    this.$router.push({ path: "/recycle" })
                 })
         }
     }

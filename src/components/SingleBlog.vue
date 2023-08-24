@@ -38,6 +38,7 @@ export default{
     },
     methods:{
         deleteSingleBlog(){
+            this.$http.post("https://recycleblog-28574-default-rtdb.firebaseio.com/posts2.json", this.blog),
             this.$http.delete("https://blog-1e9cd-default-rtdb.firebaseio.com/posts/" + this.id + ".json")
             .then(response =>{
                 this.$router.push({path:"/"})
